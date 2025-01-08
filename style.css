@@ -1,0 +1,586 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    overflow-x: hidden;
+}
+
+.dot2 {
+    animation: blink 2s infinite;
+}
+
+/* 閃爍動畫設置 */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;  /* 開始和結束時完全顯示 */
+    }
+    50% {
+        opacity: 0;  /* 中間階段透明度為0，消失 */
+    }
+}
+
+.header {
+    position: relative; /* 確保內容和背景圖片可以分層 */
+    width: 100%;
+    height: 100vh; /* 讓 Header 占滿視窗高度 */
+    overflow: hidden; /* 確保背景圖片不會超出範圍 */
+   
+}
+
+.header-bg {
+    width: 140%;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.black-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* 黑色背景 */
+    opacity: 1;
+    z-index: -2;
+}
+
+
+.header-logo img {
+    position: absolute; /* 絕對定位，貼齊左側 */
+    top: 28px;
+    left: 48px; /* 距離左邊 10px */
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-line {
+    position: relative;
+    top: 100px; /* 距離 頂端 10px */
+    left: 0;
+    width: 100vw;  /* 占滿整個網頁寬度 */
+    height: 1px;
+    background-color: white;
+    z-index: 5;
+}
+
+.left-align{
+    z-index: 2;
+}
+
+.shrink {
+    height: 0;
+    opacity: 0;
+    transform: scaleY(0);
+    overflow: hidden;
+}
+
+.header-content{
+    color: #FFF;
+    font-family: Lora;
+    font-size: 110px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110px; /* 100% */
+    letter-spacing: 3.3px;
+    text-transform: uppercase;
+    z-index: 5;
+    margin-top: 400px; /* 向下移動標題 */
+}
+
+
+header h1 {
+    font-size: 96px;
+    letter-spacing: 5px;
+    margin-left: 0; /* 使用百分比控制距離，響應式適配 */
+    line-height: 0.6;
+    text-align: left;
+    margin-bottom: 10px; /* 減少下邊距 */
+    margin-top: 100px; /* 向下移動標題 */
+    margin-left: 100px;
+    position: relative;
+    z-index: 5;
+    
+}
+
+header p {
+    font-size: 0.8vw; /* 字體大小響應視窗寬度 */
+    max-width: 100%; /* 段落寬度為視窗的100% */
+    margin-left: 0; /* 使用百分比控制距離，響應式適配 */
+    text-align: left;
+    margin-top: -10px; /* 向下移動標題 */
+    margin-left: 100px;
+    position: relative;
+    z-index: 5;
+}
+
+
+.search-ticket-container {
+    display: flex;
+    align-items: center;   /* 垂直置中 */
+    justify-content: flex-end;  /* 靠右對齊 */
+    gap: 20px;  /* 搜尋框與按鈕之間的距離 */
+    position: absolute;
+    top: 31px;
+    right: 46px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 30px;
+    padding: 4px 12px;
+    background-color: transparent;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    padding-left: 8px;
+    caret-color: white; /* 使游標顏色變白 */
+}
+
+.ticket-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 20px;  /* 增加內邊距，讓按鈕更美觀 */
+    border: 2px solid white;
+    border-radius: 30px;
+    color: black;  /* 初始黑色文字 */
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: white;  /* 初始為白色實心 */
+    text-decoration: none;
+    transition: all 0.3s ease;  /* 平滑過渡效果 */
+}
+
+/* 滑鼠懸停效果 (hover) */
+.ticket-button:hover {
+    background-color: transparent;  /* 懸停時背景透明 */
+    color: white;  /* 文字變為白色 */
+    border: 2px solid white;  /* 白色邊框保持不變 */
+}
+
+
+
+.side-menu {
+    position: absolute;
+    top: 150px;
+    right: 46px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: white;
+    font-size: 18px;
+    gap: 10px;
+}
+.side-menu a {
+    display: inline-flex;
+    justify-content: flex-start;
+    width: auto;
+    padding-right: 20px; /* 調整右邊距對齊 */
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+}
+.side-menu a.active {
+    font-weight: bold;
+}
+.side-menu .dot {
+    color: white;
+    margin-left: 10px;
+}
+.side-menu .line {
+    height: 50px;
+    width: 1px;
+    background-color: white;
+    margin-left: 20px;
+}
+
+
+
+.typing-line {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-size: 80px; /* 保持原本的80px */
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 60px;  /* 設定元素間距 */
+}
+
+.text-left {
+    flex: 1;  /* 讓左右文字區塊平均分配空間 */
+    max-width: 300px;  /* 控制文字最大寬度，避免過長 */
+    text-align: right;  /* 文字置中對齊 */
+}
+
+.text-right {
+    flex: 1;  /* 讓左右文字區塊平均分配空間 */
+    max-width: 300px;  /* 控制文字最大寬度，避免過長 */
+    text-align: left;  /* 文字置中對齊 */
+}
+
+
+.border-image img {
+    max-width: 700px;  /* 調整圖片大小 */
+    height: auto;
+    border-radius: 30px;  /* 圓角 */
+}
+
+
+.vertical-line {
+    width: 1px;
+    background-color: white;
+}
+
+
+/* 左側線條 */
+.left-line {
+    height: 500px;
+    align-self: flex-start;  /* 向上對齊 */
+    margin-top: 100px;  /* 向上移動 */
+}
+
+/* 右側線條 */
+.right-line {
+    height: 500px;
+    align-self: flex-end;  /* 向下對齊 */
+    margin-bottom: 100px;  /* 向下移動 */
+}
+
+
+
+
+
+.explore-button {
+    display: inline-block;
+    margin-top: 20px;  /* 與文字保持一定距離 */
+    padding: 12px 24px;
+    background-color: white;  /* 初始為白色背景 */
+    color: black;  /* 文字顏色改為黑色 */
+    font-size: 16px;
+    border: 2px solid white;  /* 邊框為白色，與背景同色 */
+    border-radius: 30px;  /* 圓角 */
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s ease;  /* 過渡效果應用於所有屬性 */
+    text-decoration: none;  /* 移除連結樣式 */
+}
+
+/* 滑鼠懸停效果 */
+.explore-button:hover {
+    background-color: transparent;  /* 變透明 */
+    color: white;  /* 文字變為白色 */
+    border: 2px solid white;  /* 外框保持白色 */
+}
+
+
+.image-center img {
+    display: block;
+}
+
+.section {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 100px 50px;
+    text-align: center;
+    color: white;
+    background-color: #000;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section h2 {
+    font-size: 40px; /* 2.5rem -> 40px */
+    margin-bottom: 30px;
+    opacity: 1;
+}
+
+
+
+
+.art-gallery {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.art-gallery img {
+    width: auto;
+    height: auto;
+    max-width: 500px; /* 限制最大寬度避免拉伸 */
+    max-height: 600px; /* 限制最大高度保持比例 */
+    border-radius: 20px;
+    margin-right: 100px; /* 調整圖片之間的間距 */
+}
+
+
+.marquee {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite alternate; /* alternate讓動畫來回滾動 */
+}
+
+.marquee img {
+    margin-right: 30px;
+    max-width: 300px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.marquee-content::after {
+    content: "";
+    display: inline-block;
+    width: 100px;  /* 緩衝區 */
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee:hover {
+    animation-play-state: paused;
+}
+
+
+.art-item {
+    position: relative;
+    display: inline-block;
+    margin-right: 30px;  /* 圖片間距 */
+}
+
+.art-item img {
+    max-width: 300px;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);  /* 初始透明 */
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;  /* 水平置中 */
+    align-items: center;  /* 垂直置中 */
+    opacity: 0;
+    transition: opacity 0.5s ease, background-color 0.5s ease;
+}
+
+.overlay-text {
+    color: white;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.overlay-text .date {
+    font-size: 12px;
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+}
+
+/* 滑鼠懸停效果 */
+.art-item:hover .overlay {
+    background-color: rgba(0, 0, 0, 0.7);  /* 黑色透明覆蓋，透明度降低至 70% */
+    opacity: 1;  /* 顯示內容 */
+}
+
+
+
+.cta button {
+    display: inline-block;
+    margin-top: 20px;  /* 與文字保持一定距離 */
+    padding: 12px 24px;
+    background-color: white;  /* 初始為白色背景 */
+    color: black;  /* 文字顏色改為黑色 */
+    font-size: 16px;
+    border: 2px solid white;  /* 邊框為白色，與背景同色 */
+    border-radius: 30px;  /* 圓角 */
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s ease;  /* 過渡效果應用於所有屬性 */
+    text-decoration: none;  /* 移除連結樣式 */
+}
+
+.cta button:hover {
+    background-color: transparent;  /* 變透明 */
+    color: white;  /* 文字變為白色 */
+    border: 2px solid white;  /* 外框保持白色 */
+}
+
+
+.footer-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/footer.png');
+    background-size: cover;  /* 拉伸並覆蓋整個容器 */
+    background-position: center;  /* 圖片置中 */
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+
+.footer-background {
+    width: 100%;
+    height: 10%;  /* 控制圖片高度 */
+    opacity: 0.5;  /* 調整透明度 */
+    z-index: -1;   /* 確保背景不遮擋內容 */
+}
+
+.footer-content img {
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+}
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #111;
+    color: white;
+}
+
+
+.horizontal-line {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    opacity: 0.5;
+}
+
+.typing-line {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    opacity: 0;
+}
+
+.typing-line {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;  /* 游標效果 */
+}
+
+/* 打字動畫，為每段文字設置不同的延遲 */
+.line1 {
+    animation: typing 3s steps(40, end) forwards;
+}
+.line2 {
+    animation: typing 3s steps(40, end) forwards 3s;
+}
+.line3 {
+    animation: typing 3s steps(40, end) forwards 6s;
+}
+.line4 {
+    animation: typing 3s steps(40, end) forwards 9s;
+}
+
+/* 游標閃爍動畫和游標隱藏動畫（共用） */
+.typing-line::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 1em;
+    border-right: 3px solid white;
+    animation: cursor-blink 0.75s step-end infinite;
+}
+
+/* 遞延游標隱藏動畫 */
+.line1::after {
+    animation: cursor-blink 0.75s step-end infinite, hide-cursor 1s forwards 3s;
+}
+.line2::after {
+    animation: cursor-blink 0.75s step-end infinite, hide-cursor 1s forwards 6s;
+}
+.line3::after {
+    animation: cursor-blink 0.75s step-end infinite, hide-cursor 1s forwards 9s;
+}
+.line4::after {
+    animation: cursor-blink 0.75s step-end infinite, hide-cursor 1s forwards 12s;
+}
+
+/* 打字效果動畫 */
+@keyframes typing {
+    from {
+        width: 0;
+        opacity: 1;
+    }
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+/* 游標閃爍動畫 */
+@keyframes cursor-blink {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: white;
+    }
+}
+
+/* 游標隱藏動畫 */
+@keyframes hide-cursor {
+    to {
+        border-color: transparent;
+    }
+}
+
